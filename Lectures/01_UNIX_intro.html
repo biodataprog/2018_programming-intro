@@ -34,6 +34,8 @@
       * Navigating Directories and Files
       * Running applications
 
+      * Reminder about helpful tutorial: http://korflab.ucdavis.edu/Unix_and_Perl/current.html
+      
       ---
       class: left
       # Shell - Command Line Interface (CLI)
@@ -43,18 +45,27 @@
       * Interactive interface of UNIX operating system (Linux and OSX are a
       type of UNIX) 
 
-      * Access to this in the Terminal, or iTerm on OSX (since BSD-UNIX is
-      under the hood)
+      * Access to this in the Terminal program on OSX.
+      ** An alternative Terminal program is iTerm2 - https://www.iterm2.com/
 
       * Windows: Use [Cygwin](https://www.cygwin.com/). Windows10 does have a [BASH shell](https://www.windowscentral.com/how-install-bash-shell-command-line-windows-10).
       
-      * The Shell is the commandline program. There are several types,
-        * `sh` - Bourne shell
-        * `bash` - Bourne again shell
-        * `csh` - C shell
-      
+      ---
+      # How to get to the shell
+
+      On Mac: Open the Terminal
+
+      (Spotlight - search for Terminal)
+
+       .center[![Spotlight](img/spotlight.png)]
       ---
       # Anatomy of a command line
+
+      * The Shell is the commandline program. There are several types,
+        * `sh` - Bourne shell
+        * `bash` - __Bourne again shell__ will use in class
+        * `csh` - C shell
+        * `zsh` - Z-shell
 
       ```shell
       /Users/me $ ls
@@ -70,10 +81,22 @@
 
       * Programs are run from the shell to interact with the
         filesystem, naviagate folders, read files
-      * launch programs like file editors, 
+      * launch programs like file editors, run tools
+      * cmd line programs can take arguments
+      * some arguments are named or some are just in particluar order
+      ```shell
+      $ date
+      Fri Sep 21 14:21:12 PDT 2018
+      $ date --help 
+      Usage: date [OPTION]... [+FORMAT]
+      or:  date [-u|--utc|--universal] [MMDDhhmm[[CC]YY][.ss]]
+      Display the current time in the given FORMAT, or set the system date.
+
+      ```
+      
       
       ---
-      # Reminders
+      # Filename Reminders
 
       .right[![HoneyBadger](img/honeybadger.jpg)]
       
@@ -81,6 +104,7 @@
       * File Extensions (e.g. .txt .doc .docx) don't matter
       * Avoid spaces in filenames
       * Files starting with '.' are hidden by default
+      * Backup files created by some editors will be appended with ~
 
       ---
       # Directories and listing
@@ -116,20 +140,21 @@
       ```
 
       ---
-      # Directories: Creating and Deleting
+      # cmdline help
 
-      1. mkdir - make directory
-      ```shell
-      $ mkdir MyDir
-      $ mkdir MyDir # will give warning
-      $ mkdir MyDir/UnderDir/DeepDir # will not work, UnderDir not created
-      $ mkdir -p MyDir/UnderDir/DeepDir # -p option will create intermediate one
-      ```
+      * Many programs also have a help built in
+      * use -h or --help
+      * Sometimes can run the program without any arguments and will show help
       
-      2. rmdir - remove directory
       ```shell
-      $ rmdir MyDir # won't let you unless it is empty
-      $ rmdir MyDir/UnderDir/DeepDir
+      $ sort --help
+      sort --help
+      Usage: sort [OPTION]... [FILE]...
+        or:  sort [OPTION]... --files0-from=F
+      Write sorted concatenation of all FILE(s) to standard output.
+
+      Mandatory arguments to long options are mandatory for short options too.
+      Ordering options:      
       ```
 
       ---
@@ -149,6 +174,24 @@
       5. SWCarpentry has a nice intro with graphics [here](https://swcarpentry.github.io/shell-novice/02-filedir/)
       
       ![Figure](img/filesystem.svg)
+
+
+      ---
+      # Directories: Creating and Deleting
+
+      1. mkdir - make directory
+      ```shell
+      $ mkdir MyDir
+      $ mkdir MyDir # will give warning
+      $ mkdir MyDir/UnderDir/DeepDir # will not work, UnderDir not created
+      $ mkdir -p MyDir/UnderDir/DeepDir # -p option will create intermediate one
+      ```
+      
+      2. rmdir - remove directory
+      ```shell
+      $ rmdir MyDir # won't let you unless it is empty
+      $ rmdir MyDir/UnderDir/DeepDir
+      ```
       
       ---
       # Files
@@ -214,7 +257,8 @@
       ---
       # Editors
 
-      1. pico or nano
+      1. On Biocluster `nano`. On other systems it is `pico`
+      
       * Will be one of the easiest to try out on the command line
       * Follow commands at bottom of screen to figure out how it works
 
@@ -224,7 +268,51 @@
 
       4. Syntax highlighting useful when doing programming. We will do
       more on this later.
+
+      ---
+      # Practice with editors
+
+      1. Open an editor
+      2. Write a file with three lines that list the names of 3 book titles
+      3. Save the file
       
+
+      ---
+      # Compressed and uncompressed
+
+      * Data files can be compressed to save disk space
+      * typical compression is `zip`, `gzip`, and `bzip2`
+
+      ```shell
+      $ ls -l
+      1008 Sep 28 14:29 file.txt
+      $ gzip file.txt
+      $ ls -l
+      386 Sep 28 14:29 file.txt.gz
+      $ gunzip file.txt.gz
+      $ ls -l
+      1008 Sep 28 14:29 file.txt
+      ```
+
+      * Can substitute `bzip2` and `bunzip2`
+      * On some systems `pigz` and `pbzip2` are parallelized compressors that can use multiple processors (go faster!)
+     
+
+      ---
+      # Downloading data from web
+
+      Cmdline tools `curl` and `wget` can download data from the web/ftp
+
+
+      * use -O to tell curl to save the data to a file, named by the file link
+      ```
+      $ curl -O http://www-personal.umich.edu/~jlawler/wordlist
+      ```
+
+      ```
+      $ curl -o ucr_index.html https://www.ucr.edu > ucr_index.html
+      ```
+ 
       ---
       # Other resources
       1. [Introduction to UNIX Shell - Software Carpentry](https://swcarpentry.github.io/shell-novice/)
