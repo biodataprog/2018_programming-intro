@@ -10,8 +10,9 @@ $ ssh-keygen -t rsa -b 4096 -C "youremail"
 
 Setting up ssh keys for passwordless login
 ==========================================
-1. generate ssh key pair on your laptop
-2. Copy ~/.ssh/id_rsa.pub YOURNAME@biocluster.ucr.edu
+1. Generates a ssh key pair on your laptop
+2. Need to copy ~/.ssh/id_rsa.pub to biocluster.ucr.edu
+
 ```shell
 $ scp  ~/.ssh/id_rsa.pub biocluster.ucr.edu:.ssh/mylaptopkey.pub
 $ ssh YOURNAME@biocluster.ucr.edu
@@ -20,7 +21,32 @@ $ ssh YOURNAME@biocluster.ucr.edu
 [biocluster] $ chmod 644 authorized_keys2
 [biocluster] $ logout
 $ ssh YOURNAME@biocluster.ucr.edu
+# should prompt you for your SSH key password
 ```
+
+On your laptop enable local caching of the ssh key password by doing
+```shell
+$ ssh-add
+password:
+$ ssh  YOURNAME@biocluster.ucr.edu
+# no password requested!
+```
+
+Can edit ~/.ssh/config to setup aliases, preset the user name and simplify 
+
+```plain
+$ cat ~/.ssh/config
+ForwardX11 yes
+ForwardX11Trusted yes
+ForwardAgent yes
+
+Host biocluster
+ Hostname biocluster.ucr.edu
+ User MYUSERNAME
+```
+
+Can just use `ssh biocluster` now instead of `ssh MYUSERNAME@biocluster.ucr.edu`
+
 
 Using Public SSH keys
 ====================
