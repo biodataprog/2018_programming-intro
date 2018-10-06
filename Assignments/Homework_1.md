@@ -34,7 +34,7 @@ as a series of commands just as you would type on the command line.
     https://biodataprog.github.io/2018_programming-intro/data/Nc3H.expr.tab
     + Sort the file based on the FPKM column (which is the gene
     expression) (write out to a new file called
-    Nc20H.expr.sorted.tab).
+    Nc3H.expr.sorted.tab).
     Remember the in-class introduction to sorting which ignores the header. Note your sorting will be more 
     complicated than what is depicted here.
     ```shell
