@@ -14,8 +14,8 @@ Setting up ssh keys for passwordless login
 2. Need to copy ~/.ssh/id_rsa.pub to biocluster.ucr.edu
 
 ```shell
-$ scp  ~/.ssh/id_rsa.pub biocluster.ucr.edu:.ssh/mylaptopkey.pub
-$ ssh YOURNAME@biocluster.ucr.edu
+[YOURLAPTOP] $ scp  ~/.ssh/id_rsa.pub YOURNAME@biocluster.ucr.edu:.ssh/mylaptopkey.pub
+[YOURLAPTOP] $ ssh YOURNAME@biocluster.ucr.edu
 [biocluster] $ cd .ssh
 [biocluster] $ cat mylaptopkey.pub >> authorized_keys2
 [biocluster] $ chmod 644 authorized_keys2

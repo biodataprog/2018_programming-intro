@@ -26,8 +26,8 @@
 <li>Generates a ssh key pair on your laptop</li>
 <li>Need to copy ~/.ssh/id_rsa.pub to biocluster.ucr.edu</li>
 </ol>
-<pre class="shell"><code>$ scp  ~/.ssh/id_rsa.pub biocluster.ucr.edu:.ssh/mylaptopkey.pub
-$ ssh YOURNAME@biocluster.ucr.edu
+<pre class="shell"><code>[YOURLAPTOP] $ scp  ~/.ssh/id_rsa.pub YOURNAME@biocluster.ucr.edu:.ssh/mylaptopkey.pub
+[YOURLAPTOP] $ ssh YOURNAME@biocluster.ucr.edu
 [biocluster] $ cd .ssh
 [biocluster] $ cat mylaptopkey.pub &gt;&gt; authorized_keys2
 [biocluster] $ chmod 644 authorized_keys2
