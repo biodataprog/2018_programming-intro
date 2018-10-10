@@ -36,13 +36,17 @@
       * Using Pipes in UNIX to pass Input/Output
       
       ---
-      #cmdline options
+      #cmdline options in BASH
       * `^` means "Control key"
-      * end a session: `^D` (End of File message)
       * cancel a running application: `^C`
+      * end a session: `^D` (End of File message)
       * Tab to try to autocomplete (applications, filenames, directories)
       * while typing on cmdline - jump to end of line: `^E`
       * get back to the beginning of line: `^A`
+      * Up and down keys cycle through history of commands
+      * Type `!!` to execute the last command
+      * Type `history` to see list of previous commands
+      * Type `!NUMBER` to excute cmd from that list
       
       ---
       #Foreground, Background
@@ -58,7 +62,7 @@
       $ emacs
       ^Z
       [1]+  Stopped                 emacs
-      $ bg # job in backgroun
+      $ bg # job in background
       [1]+ emacs &
       $ fg
       emacs
@@ -173,37 +177,8 @@
       $ echo "hello world" | wc
             1       2      12
       # process a file
-      $ wc -l data/Nc20H.expr.tab
-          9734 Nc20H.expr.tab
-      ```
-
-
-      ---
-      # Network access
-
-      UNIX gives you access to many utilities to talk to the network
-      
-      ```shell
-      $ hostname                   # name of your computer
-      ZyGoAir
-      $ ping -c 3 www.ucr.edu      # send 3 packets of info to host,
-                                   # count how long it takes to get back
-      PING www.ucr.edu (138.23.226.208): 56 data bytes
-      64 bytes from 138.23.226.208: icmp_seq=0 ttl=241 time=34.398 ms
-      64 bytes from 138.23.226.208: icmp_seq=1 ttl=241 time=33.735 ms
-      64 bytes from 138.23.226.208: icmp_seq=2 ttl=241 time=33.954 ms
-      --- www.ucr.edu ping statistics ---
-      3 packets transmitted, 3 packets received, 0.0% packet loss
-      round-trip min/avg/max/stddev = 33.735/34.029/34.398/0.276 ms
-
-      $ ping -c 3 www.bbc.co.uk      
-      PING www.bbc.net.uk (212.58.246.90): 56 data bytes
-      64 bytes from 212.58.246.90: icmp_seq=0 ttl=44 time=176.739 ms
-      64 bytes from 212.58.246.90: icmp_seq=1 ttl=44 time=176.181 ms
-      64 bytes from 212.58.246.90: icmp_seq=2 ttl=44 time=176.346 ms      
-      --- www.bbc.net.uk ping statistics ---
-      3 packets transmitted, 3 packets received, 0.0% packet loss
-      round-trip min/avg/max/stddev = 176.181/176.422/176.739/0.234 ms
+      $ wc -l long-file.txt
+          9734 long-file.txt
       ```
 
       ---
@@ -314,7 +289,7 @@
       NETVARRFVSDIRAVSLKAQIRPSPSLKQMMCKYCDSLLVEGKTCSTTVENASKGGKKPW
       ADVMVTKCKTCGNVKRFPVSAPRQKRRPFREQKAVEGQDTTPAVSEMSTGAD
       
-      $ curl -O http://www.uniprot.org/uniprot/E3Q6S8.fasta
+      $ curl -OL http://www.uniprot.org/uniprot/E3Q6S8.fasta
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
       100   345  100   345    0     0    724      0 --:--:-- --:--:-- --:--:--   724
@@ -323,6 +298,7 @@
       ```
       There are some other similar commands that may be installed on
       other systems
+      * often use the '-L' in curl to allow URL redirects
       * wget - also gets web/FTP on commandline
       * ncftpget - for ftp
       * lftp - a command line FTP client - also works for http/web
@@ -556,7 +532,7 @@
       $ rm "st*r" # or rm st\*r
       ```
       ---
-      # Fin
+      # Practice practice practice
 
       Practice these commands. Many concepts but these are the heart
       of UNIX access which will give you confidence to start to play
@@ -567,7 +543,35 @@
 
       * read the man page for several programs that are new to you -
       can you find out about other command line options to gzip?
+
+
+      ---
+      # Connecting to different computers with SSH
+
+      SSH - Secure Socket Shell, encrypted connection to another computer
+
+      ```shell
+      $ ssh username@biocluster.ucr.edu
+      The authenticity of host 'biocluster.ucr.edu (138.23.51.30)' can't be established.
+      ECDSA key fingerprint is SHA256:AAAAC3NzaC1lZDI1NTE5AAAAIAap2P4y+xQArucZdVeJJ+XVky3rethBzNUikB8Uepv7
+      Are you sure you want to continue connecting (yes/no)? yes
+      password:
+      ```
+      __you will not see your password when typing!__
+
+
+      ---
+      # SSH keys
+
+      * Keys are long numbers which are used as part of encryption
+      protocol
+      * They are generated in pairs as 'public' and 'private'
+      * Can use these keys as ways to login INSTEAD of your password
+      * Also use these for logging into github from cmdline
+
+      See [SSH Key Info](https://biodataprog.github.io/2018_programming-intro/Resources/SSH_keys.html)
       
+
     </textarea>
     <script src="js/remark.js" type="text/javascript">
     </script>
