@@ -41,14 +41,21 @@
       ```python
       if TRUE:
           THEN DO X
-      else
-          THEN DO Y
+      elif OTHER_THING_TRUE:
+          THEN DO Y 
+      else:
+          THEN DO Z
       ```
 
-      And Loop
+      And Loops
       ```python
       while ( TRUE ):
           Do X
+
+      for ITERATOR in LIST:
+          Do Y
+      for i in range(5):
+          print(i) 
       ```
       ---
       # Python uses indentation
@@ -153,7 +160,7 @@
       Iterate on a list using indexes
       ```python
       list = (7, 10, 2, 2, 7)
-      for i in range(len(list):
+      for i in range(len(list)):
           print("list[%d] = %s"%(i,list[i]))
       ```
       Iterate on a list directly
