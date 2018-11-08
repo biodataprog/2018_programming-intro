@@ -1,6 +1,10 @@
 Homework 3: Advanced Python
 ===========================
 
+Note I have provided working functions `read_fasta` which can be used
+as-is to read in a fasta file and return a list of sequences as
+strings.
+
 1. Write a script `protein_freq.py` which will read in a protein Fasta format file [Saccharomyces_cerevisiae.peps.fa](https://biodataprog.github.io/programming-intro/data/Saccharomyces_cerevisiae.peps.fa.gz)
     a. Print out the overall frequency (percentage) of each amino acid
        observed across all the sequences
