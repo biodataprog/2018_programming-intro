@@ -89,6 +89,25 @@
       quantification from RNA-seq reads using lightweight algorithms" doi:[10.1038/nbt.2862](http://dx.doi.org/10.1038/nbt.2862)
 
       ---
+      # Alignment free quantification
+
+      ```bash
+      module load kallisto
+      TRANSCRIPTS=Organism.transcripts.fasta
+      CPU=2
+      for SAMPLE in SAMPLE1 SAMPLE2 SAMPLE3;
+      do
+        kallisto quant -i $TRANSCRIPTS -o kallito/sample1 -t $CPU --bias --single \
+        -l 300 --sd 20 $INDIR/${SAMPLE}.fastq.gz
+      done
+      ```
+      
+      ---
+      # Example code and pipelines
+      
+      https://github.com/stajichlab/C_lusitaniae_DHED1_RNAseq/tree/master/jobs
+
+      ---
       # Denovo assembly
 
       [Trinity Assembler](http://trinityrnaseq.github.io/) for RNASeq
@@ -138,16 +157,22 @@
       ```
 
       ---
-      # Process BAM files for other tools
+      # Get counts
 
-      * give to htseq-count to get the read depth
-      * process with stringtie
+      Subread - http://subread.sourceforge.net/
 
       ```bash
-      $ module load stringtie
-      GTF=genome/genes.gff
-      $ stringtie -G $GTF -b stringtie_out -e -o stringtie.gtf -A stringtie.gene_abund.tab RNASeq_aln.sort.bam
+      module load subread/1.6.0
+      CPUS=2
+      GENOME=genomefile.fasta
+      GFF=genes.gff
+      OUTFILE=read_counts.tab
+      INFILE=RNASeq_aln.sort.bam
+      featureCounts -g gene_id -T $CPUS -G $GENOME -s 0 -a $GFF -o $OUTFILE \
+      -F GTF $INFILE
       ```
+
+      
     </textarea>
     <script src="js/remark.js" type="text/javascript">
     </script>
