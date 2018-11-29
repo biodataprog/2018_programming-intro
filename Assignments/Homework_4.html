@@ -15,10 +15,14 @@
 <ol type="1">
 <li>Using python write a tool which generates a random subsampling tool for sequences. Given a FASTA sequence database file, which has 100,000 sequences, generate a new file which is a random subset these sequences selecting only 10% of them. Make this 10% an option in the program so it is easy to change to 20%, etc.</li>
 </ol>
-<p>See the script 'rand_shuffle_seqs.py' in the homework template</p>
+<p>See the script <code>rand_shuffle_seqs.py</code> in the homework template</p>
 <ol start="2" type="1">
-<li><p>Run RNA-Seq analysis of this Bacteria light induction project. https://www.ncbi.nlm.nih.gov/bioproject/PRJNA315575 Only work on 2 time points, the data can be downloaded with <code>download_bacteria_light_fastq.sh</code> script</p></li>
-<li></li>
+<li>Run RNA-Seq analysis of this Bacteria light induction project. <a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA315575" class="uri">https://www.ncbi.nlm.nih.gov/bioproject/PRJNA315575</a>. Only focus on 2 time points, the data can be downloaded with <code>download_bacteria_light_fastq.sh</code> script</li>
 </ol>
+<ul>
+<li>present a table of the genes with 2x upregulation in the 4hrs (SRR3234522) vs the 1hr (SRR3234519) timepoint</li>
+<li>Use Kallisto as easiest way to get expression computed for the timepoints</li>
+<li>can also explore GSNAP or Hisat2</li>
+</ul>
 </body>
 </html>
